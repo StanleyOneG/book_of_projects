@@ -44,6 +44,11 @@ def get_deck():
     random.shuffle(deck)
     return deck
 
+def display_hands(player_hand, dealer_hand, show_dealer_first):
+    ''' Show the player's and dealer's hands. Hide dealer's first card if
+    show_dealer_first is False '''
+    pass
+
 def main():
     print(''' Blackjack.
 
@@ -74,8 +79,12 @@ def main():
 
         # Give dealer and player card from the deck each:
         deck = get_deck()
+        dealer_hand = [deck.pop(), deck.pop()]
+        player_hand = [deck.pop(), deck.pop()]
 
-    
+        # Handle player actions:
+
+
         break
 
 
