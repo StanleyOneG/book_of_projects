@@ -33,6 +33,17 @@ def get_bet(max_bet):
         if 1 <= bet <= max_bet:
             return bet # Player entered a valid bet
 
+def get_deck():
+    ''' Return a list of (rank, suit) tuples for all 52 cards in the deck.'''
+    deck = []
+    for suit in (HEARTS, DIAMONDS, SPADES, CLUBS):
+        for rank in range(2, 11):
+            deck.append((str(rank), suit)) # Add the numberd cards
+        for rank in ('J', 'K', 'Q', 'A'):
+            deck.append((rank, suit)) # Add the face and ace cards
+    random.shuffle(deck)
+    return deck
+
 def main():
     print(''' Blackjack.
 
@@ -61,6 +72,10 @@ def main():
         print("Money: ", money)
         bet = get_bet(money)
 
+        # Give dealer and player card from the deck each:
+        deck = get_deck()
+
+    
         break
 
 
