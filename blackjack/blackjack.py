@@ -15,6 +15,23 @@ CLUBS = chr(9827)
 # (A list of chr codes is at https://inventwithpython.com/charactermap)
 BACKSIDE = 'backside'
 
+def get_bet(max_bet):
+    ''' Ask the player how much money they want to bet '''
+    # Keep asking until the player enters the valid amount
+    while True:
+        print(f"How much do you want to bet? (from 1 to {max_bet} or QUIT)")
+        bet = input('> ').upper().strip()
+
+        if bet == 'QUIT':
+            print("Thanks for playing!")
+            sys.exit()
+
+        if not bet.isdecimal():
+            continue # If the player didn't enter a number, ask again.
+
+        bet = int(bet)
+        if 1 <= bet <= max_bet:
+            return bet # Player entered a valid bet
 
 def main():
     print(''' Blackjack.
@@ -39,8 +56,12 @@ def main():
             print("Good thing you weren't playing with real money")
             print("Thanks for playing")
             sys.exit()
-        
 
+        # Let the player enter bet for this round
+        print("Money: ", money)
+        bet = get_bet(money)
+
+        break
 
 
 if __name__ == '__main__':
