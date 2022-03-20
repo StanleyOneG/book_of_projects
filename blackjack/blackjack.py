@@ -16,7 +16,7 @@ CLUBS = chr(9827)
 BACKSIDE = 'backside'
 
 def get_bet(max_bet):
-    ''' Ask the player how much money they want to bet '''
+""" Ask the player how much money they want to bet """
     # Keep asking until the player enters the valid amount
     while True:
         print(f"How much do you want to bet? (from 1 to {max_bet} or QUIT)")
@@ -34,7 +34,7 @@ def get_bet(max_bet):
             return bet # Player entered a valid bet
 
 def get_deck():
-    ''' Return a list of (rank, suit) tuples for all 52 cards in the deck.'''
+""" Return a list of (rank, suit) tuples for all 52 cards in the deck."""
     deck = []
     for suit in (HEARTS, DIAMONDS, SPADES, CLUBS):
         for rank in range(2, 11):
@@ -45,8 +45,8 @@ def get_deck():
     return deck
 
 def display_hands(player_hand, dealer_hand, show_dealer_first):
-    ''' Show the player's and dealer's hands. Hide dealer's first card if
-    show_dealer_first is False '''
+""" Show the player's and dealer's hands. Hide dealer's first card if
+show_dealer_first is False """
     pass
 
 def main():
