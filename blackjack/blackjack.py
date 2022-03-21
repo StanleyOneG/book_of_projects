@@ -45,7 +45,29 @@ def get_deck():
     return deck
 
 def get_hand_value(cards):
-    pass
+    """ Returns the value of cards. Face cards are worth 10,
+    aces are worth 11 or 1 (function picks the most suitable value)"""
+    value = 0
+    num_of_aces = 0
+
+    # Add value for non-ace cards:
+    for card in cards: # cards is a tuple (rank, suit)
+        rank = card[0]
+        if rank == 'A':
+            num_of_aces += 1
+        elif rank in ('J', 'K', 'Q'): # Face cards are worth 10
+            value += 10
+        else:
+            value += int(rank)
+
+    # Add value for aces:
+    value += num_of_aces # Add 1 per ace
+    # If another 10 can be added, do so:
+    for i in num_of_aces:
+        if value + 10 <= 21:
+            value += 10
+
+    return value
 
 def display_cards(cards):
     pass
@@ -99,9 +121,13 @@ def main():
         player_hand = [deck.pop(), deck.pop()]
 
         # Handle player actions:
+        print('Bet: ', bet)
+        while True: # Keep looping until the player stands or bust
+            display_hands(player_hand, dealer_hand, false)
+            print()
 
 
-        break
+        pass
 
 
 if __name__ == '__main__':
