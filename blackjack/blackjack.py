@@ -105,6 +105,9 @@ def display_hands(player_hand, dealer_hand, show_dealer_first):
     print('PLAYER: ', get_hand_value(player_hand))
     display_cards(player_hand)
 
+def get_move(player_hand, money):
+    pass
+
 def main():
     print(''' Blackjack.
 
@@ -143,6 +146,16 @@ def main():
         while True: # Keep looping until the player stands or bust
             display_hands(player_hand, dealer_hand, False)
             print()
+
+            # Check if the player has bust:
+            if get_hand_value(player_hand) >21:
+                print('Unfortunately, you ran out of 21...')
+                break
+
+            # Get the player's move, either H, S, or D:
+            move = get_move(player_hand, money - bet)
+
+
             break
 
 
