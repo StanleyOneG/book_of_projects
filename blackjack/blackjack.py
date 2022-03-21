@@ -63,14 +63,32 @@ def get_hand_value(cards):
     # Add value for aces:
     value += num_of_aces # Add 1 per ace
     # If another 10 can be added, do so:
-    for i in num_of_aces:
+    for i in range(num_of_aces):
         if value + 10 <= 21:
             value += 10
 
     return value
 
 def display_cards(cards):
-    pass
+    """ Didplsy all the cards in cards list """
+    rows = ['', '', '', '', ''] # The text to display on each row
+
+    for i, card in enumerate(cards):
+        rows[0] += ' ___  ' # Print the top line of the card
+        if card == BACKSIDE:
+            # Print the card's back:
+            rows[1] += '|## | '
+            rows[2] += '|###| '
+            rows[3] += '|_##| '
+        else:
+            # print the card's front:
+            rank, suit = card # unpack a tuple
+            rows[1] += f'|{rank.ljust(2)} | '
+            rows[2] += f'| {suit} | '
+            rows[3] += f"|_{rank.rjust(2, '_')}| "
+    # Print each row in the screen
+    for row in rows:
+        print(row)
 
 def display_hands(player_hand, dealer_hand, show_dealer_first):
     """ Show the player's and dealer's hands. Hide dealer's first card if
@@ -123,11 +141,12 @@ def main():
         # Handle player actions:
         print('Bet: ', bet)
         while True: # Keep looping until the player stands or bust
-            display_hands(player_hand, dealer_hand, false)
+            display_hands(player_hand, dealer_hand, False)
             print()
+            break
 
 
-        pass
+        break
 
 
 if __name__ == '__main__':
