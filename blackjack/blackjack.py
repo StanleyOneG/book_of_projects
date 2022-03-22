@@ -168,7 +168,7 @@ def main():
             if get_hand_value(player_hand) >21:
                 print('Unfortunately, you ran out of 21...')
                 break
-
+            
             # Get the player's move, either H, S, or D:
             move = get_move(player_hand, money - bet)
 
