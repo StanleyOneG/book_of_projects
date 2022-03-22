@@ -172,6 +172,29 @@ def main():
             # Get the player's move, either H, S, or D:
             move = get_move(player_hand, money - bet)
 
+            # Handle the player's move
+            if move == 'D':
+                # The player is doubling down:
+                additional_bet = get_bet(min(bet, (money - bet)))
+                bet += additional_bet
+                print(f'Bet increased to {bet}')
+                print('Bet: ', bet)
+
+            if move in ('H', 'D'):
+                # Hit/Doubling down takes another card
+                new_card = deck.pop()
+                rank, suit = new_card
+                print(f'You drew a {rank} of {suit}')
+                player_hand.append(new_card)
+
+                if get_hand_value(player_hand) > 21:
+                    # The player has busted
+                    print('You have more than 21...')
+                    continue
+
+            if move in ('S', 'D'):
+                # Stand/Doubling down stops the player's turn
+                break
 
             break
 
